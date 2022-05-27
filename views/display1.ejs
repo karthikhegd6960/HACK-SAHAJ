@@ -8,13 +8,20 @@
   </head>
   <body>
 <h1>
+  <form class="" action="/display1" method="post">
   <% var i=0 %>
+  <% var str="" %>
   <%data.forEach(function(transaction){ %>
+
     <h2><%= transaction.firstname %> <%= transaction.lastname %></h2>
     <h2><%= transaction.type_of_truck %></h2>
+    <h2>CODE : <%= transaction.insurance_policy_no %>  </h2>
     <% i++ %>
-    <button type="submit" class="btn btn-primary" name="index" value='client'><h2>BOOK NOW</h2></button>
+    <label for="">Enter code to book</label>
+    <input type="text" name="index" >
+    <button type="submit" class="btn btn-primary"  value=""><h2>BOOK NOW</h2></button>
 <%  }); %>
+</form>
 </h1>
   </body>
 </html>

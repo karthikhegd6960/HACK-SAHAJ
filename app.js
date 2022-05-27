@@ -62,10 +62,28 @@ app.post("/clientpro1",async function(req,res){
 
 
 });
-app.post("/display1",function(req,res){
+app.post("/display1",async function(req,res){
   var x=req.body.index;
-  console.log(noobs[i]);
-  res.redirect("client");
+  console.log("mdkllkf");
+  console.log(x);
+  var temp=0;
+  for(var y=0;y<x.length;y++){
+    if(x[y]!==""){
+      temp=y;
+      break;
+    }
+  }
+  console.log(temp);
+  try{
+
+  console.log(noobs[temp]);
+  res.render("booked",{fin:noobs[temp]});
+}
+catch(err){
+  console.log(err);
+}
+
+
 });
 app.post('/update',async function(req,res){
     try{
@@ -158,9 +176,10 @@ app.post("/driver",async(req,res)=>{
         console.log(err)
     }
     try{
+      var today=new Date();
     UpdateSchema=new display({
 
-        phoneno:driver_phone,
+        phoneno:req.body.phoneno,
         availability_date:today,
         start_city:"#####",
         intermediate_city:"####",
